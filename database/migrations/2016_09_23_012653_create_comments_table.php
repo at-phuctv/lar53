@@ -16,8 +16,8 @@ class CreateCommentsTable extends Migration
         Schema::create('comment', function (Blueprint $table) {
             $table->increments('id');
             $table->text('content');
-            $table->integer('t_new_id')->unsigned();
-            $table->foreign('t_new_id')->references('id')->on('t_news');
+            $table->integer('news_id')->unsigned();
+            $table->foreign('news_id')->references('id')->on('t_news')->onDelete('RESTRICT');
             $table->timestamps();
         });
     }
