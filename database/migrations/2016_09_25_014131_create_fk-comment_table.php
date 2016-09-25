@@ -14,8 +14,9 @@ class CreateFkCommentTable extends Migration
     public function up()
     {
         Schema::table('comment', function (Blueprint $table) {
-             $table->integer('user_id')->unsigned();
              $table->foreign('user_id','fk_u_c')->references('id')->on('users')->onDelete('RESTRICT');
+
+            $table->foreign('news_id','fk_n_c')->references('id')->on('t_news')->onDelete('RESTRICT');
         });
     }
 
@@ -27,7 +28,8 @@ class CreateFkCommentTable extends Migration
     public function down()
     {
         Schema::table('comment', function (Blueprint $table) {
-            $table->dropForeign('fk_u_c');
+             $table->dropForeign('fk_u_c');
+             $table->dropForeign('fk_n_c');
         });
     }
 }
