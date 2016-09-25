@@ -18,6 +18,7 @@ class CreateCommentsTable extends Migration
             $table->text('content');
             $table->integer('news_id')->unsigned();
             $table->foreign('news_id')->references('id')->on('t_news')->onDelete('RESTRICT');
+            $table->date('date');
             $table->timestamps();
         });
     }
