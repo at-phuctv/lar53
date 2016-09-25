@@ -39,5 +39,6 @@ $factory->define(App\Models\News::class, function (Faker\Generator $faker) {
 $factory->define(App\Models\Comment::class, function (Faker\Generator $faker) {
     return [
         'content' => $faker->text(200),
+        'date'=>$faker->date(),
     ];
 });
