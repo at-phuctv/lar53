@@ -22,5 +22,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('register', 'Auth\RegisterController@showRegistrationForm');
     Route::post('register', 'Auth\RegisterController@register');
     Route::get('logout', 'Auth\LoginController@logout');
+    //Route for category
+    Route::resource('categories', 'CategoryController');
 });
 Auth::routes();

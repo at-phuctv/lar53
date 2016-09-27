@@ -13,7 +13,10 @@
         <!-- Styles -->
         <link href={!!asset('/css/app.css')!!} rel="stylesheet">
         <link href={!!asset('/css/footer.css')!!} rel="stylesheet">
-
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
         <!-- Scripts -->
         <script>
             window.Laravel = <?php
@@ -46,7 +49,12 @@ echo json_encode([
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manager <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{!! route('categories.index') !!}">Category</a></li>
+                            </ul>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -80,13 +88,19 @@ echo json_encode([
                 </div>
             </div>
         </nav>
-
+        <div class="container">
+            <div class="row">
+                @include('flash::message')
+            </div>
+        </div>
         @yield('content')
-
         <!-- Scripts -->
+        <script src="//code.jquery.com/jquery.js"></script>
         <script src={!!asset('/js/app.js')!!}></script>
+        <script src={!!asset('/js/hidding_flash.js')!!}></script>
+        @yield('script')
     </body>
-    <footer id='footer'>
-        Copyright information
-    </footer>
+    <div id='footer'>
+        <p style="text-align: center;padding-top: 10px;"><strong>&copy; Authors</strong></p>
+    </div>
 </html>
