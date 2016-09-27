@@ -18,11 +18,11 @@ public function run()
     {
         $faker = Faker::create();
         $newid = News::pluck('id')->toArray();
-        $userid = User::pluck('id')->toArray();
+        $name = User::pluck('name')->toArray();
         for ($i = 0; $i < 5; $i++) {
             factory(Comment::class)->create([
                 'news_id' => $faker->randomElement($newid),
-                'user_id' => $faker->randomElement($userid),
+                'author' => $faker->randomElement($name),
             ]);
         }
     }
