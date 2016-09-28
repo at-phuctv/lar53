@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
+use App\Http\Requests\SearchCategoryRequest;
 use App\Http\Requests;
 use DB;
 use App\Models\Category;
@@ -17,10 +18,16 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $category = DB::table('t_category')->orderBy('id', 'DESC')->paginate(10);
-        return view('category.index', compact('category'));
+        $input = $request->get('name');
+        $select = ['id', 'name', 'introduce'];
+        $data = Category::select($select);
+        if (isset($input)) {
+            $category = $data->where('name', 'LIKE', '%' . $input . '%');
+        }
+        $category = $data->orderBy('id', 'DESC')->paginate(10);
+        return view('category.index', ['category' => $category]);
     }
 
     /**
