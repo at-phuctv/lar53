@@ -15,7 +15,7 @@
     </div>
     @endif
     <!--Form edit category-->
-    {!! Form::open(array('route'=>array('categories.update',$category->id),'method'=>'PUT')) !!}  
+    {!! Form::open(array('route'=>array('categories.update',$category->id),'method'=>'PUT','enctype' => 'multipart/form-data')) !!}  
     <div class="row" style="margin-bottom: 10px;">
         <div class="col-md-6">
             <label>Name</label>
@@ -28,7 +28,19 @@
             <textarea class="form-control" cols="10" rows="6" name="introduce">{{ old('introduce',  isset($category->introduce) ? $category->introduce : null) }}</textarea>
         </div>
     </div>
-    <div class="row">
+    <div class="row" style="margin-bottom: 10px;">
+        <div class="col-md-6">
+            <label>Image old</label>
+            <img src="{!! asset('/uploads/'.$category->image) !!}" width="100px" class="img-responsive" />
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 10px;">
+        <div class="col-md-6">
+            <label>Image news</label>
+            <input type="file"  name="image" />
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 100px;">
         <div class="col-md-6">
             <button type="submit" class="btn btn-primary">Edit</button>
         </div>

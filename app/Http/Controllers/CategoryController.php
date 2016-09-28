@@ -21,7 +21,12 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
         $input = $request->get('name');
-        $select = ['id', 'name', 'introduce'];
+        $select = [
+            'id',
+            'name',
+            'introduce',
+            'image'
+        ];
         $data = Category::select($select);
         if (isset($input)) {
             $category = $data->where('name', 'LIKE', '%' . $input . '%');
@@ -49,6 +54,10 @@ class CategoryController extends Controller
     public function store(CreateCategoryRequest $request)
     {
         $input = $request->all();
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $input['image'] = Category::upload($image);
+        }
         Category::create($input);
         flash('Create category successful!', 'success');
         return redirect()->route('categories.index');
@@ -89,6 +98,10 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
         $input = $request->all();
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $input['image'] = Category::upload($image);
+        }
         $category->update($input);
         flash('Update category successful!', 'success');
         return redirect()->route('categories.index');

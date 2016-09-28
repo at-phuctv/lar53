@@ -26,7 +26,8 @@ class CreateCategoryRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255||unique:t_category',
-            'introduce' => 'required|max:255'
+            'introduce' => 'required|max:255',
+            'image' =>'required|image|mimes:jpeg,bmp,png',
         ];
     }
 }

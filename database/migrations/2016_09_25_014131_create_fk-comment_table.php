@@ -14,7 +14,7 @@ class CreateFkCommentTable extends Migration
     public function up()
     {
         Schema::table('comment', function (Blueprint $table) {
-            $table->foreign('news_id', 'fk_n_c')->references('id')->on('t_news')->onDelete('RESTRICT');
+            $table->foreign('news_id', 'fk_n_c')->references('id')->on('t_news')->onDelete('CASCADE');
         });
     }
 
