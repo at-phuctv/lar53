@@ -24,6 +24,7 @@ $factory->define(App\Models\Category::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
         'introduce' => $faker->text(50),
+        'image' => $faker->imageUrl(),
     ];
 });
 
@@ -32,13 +33,13 @@ $factory->define(App\Models\News::class, function (Faker\Generator $faker) {
     return [
         'introduce' => $faker->text(50),
         'content' => $faker->text(200),
-        'image' => $faker->image(),
+        'image' => $faker->imageUrl(),
         'title' => $faker->title,
     ];
 });
 $factory->define(App\Models\Comment::class, function (Faker\Generator $faker) {
     return [
         'content' => $faker->text(200),
-        'date'=>$faker->date(),
+        'date' => $faker->date(),
     ];
 });
