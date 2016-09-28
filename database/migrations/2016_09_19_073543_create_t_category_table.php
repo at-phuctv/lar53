@@ -16,6 +16,7 @@ class CreateTCategoryTable extends Migration
             $table->increments('id');
             $table->string('name')->unique();
             $table->string('introduce');
+            $table->string('image');
             $table->timestamps();
         });
     }
