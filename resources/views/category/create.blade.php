@@ -14,26 +14,31 @@
         </ul>
     </div>
     @endif
-    <form action="{!! route('categories.store') !!}" method="POST">
-        <div class="row" style="margin-bottom: 10px;">
-            <div class="col-md-6">
-                <label>Name</label>
-                <input type="text" class="form-control" name="name" />
-            </div>
+    {!! Form::open(['route' => 'categories.store', 'class' => 'form-horizontal', 'method' => 'POST' , 'enctype' => 'multipart/form-data']) !!}
+    <div class="row" style="margin-bottom: 10px;">
+        <div class="col-md-6">
+            <label>Name</label>
+            <input type="text" class="form-control" name="name" />
         </div>
-        <div class="row" style="margin-bottom: 10px;">
-            <div class="col-md-6">
-                <label>Introduce</label>
-                <textarea class="form-control" cols="10" rows="6" name="introduce"></textarea>
-            </div>
+    </div>
+    <div class="row" style="margin-bottom: 10px;">
+        <div class="col-md-6">
+            <label>Introduce</label>
+            <textarea class="form-control" cols="10" rows="6" name="introduce"></textarea>
         </div>
-        <div class="row">
-            <div class="col-md-6">
-                <button type="submit" name="ok" class="btn btn-primary">Create</button>
-            </div>
+    </div>
+    <div class="row" style="margin-bottom: 10px;">
+        <div class="col-md-6">
+            <label>Image</label>
+            <input type="file"  name="image" />
         </div>
-        {{ csrf_field() }}
-    </form>
+    </div>
+    <div class="row" style="margin-bottom: 100px;">
+        <div class="col-md-6">
+            <button type="submit" name="ok" class="btn btn-primary">Create</button>
+        </div>
+    </div>
+    {!! Form::close() !!}
 </div>
 @stop
 @section('script')

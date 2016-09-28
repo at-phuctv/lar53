@@ -16,11 +16,11 @@ class AddForeignKeyToTNewsTable extends Migration
             $table->foreign('cate_id', 't_news_ibfk1')
                 ->references('id')
                 ->on('t_category')
-                ->onDelete('RESTRICT');
+                ->onDelete('CASCADE');
              $table->foreign('user_id', 't_news_ibfk2')
                 ->references('id')
                 ->on('users')
-                ->onDelete('RESTRICT');
+                ->onDelete('CASCADE');
         });
     }
 

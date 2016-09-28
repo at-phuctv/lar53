@@ -32,13 +32,14 @@
                         <th>Id</th>
                         <th>Name</th>
                         <th>Introduce</th>
+                        <th>Image</th>
                         <th colspan="2" style="text-align: center">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @if(count($category) === 0)
                     <tr>
-                        <td style="text-align: center;" colspan="5">
+                        <td style="text-align: center;" colspan="6">
                             No result on list category
                         </td>
                     </tr>
@@ -48,6 +49,7 @@
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->name }}</td>
                         <td>{{ str_limit($item->introduce, 100) }}</td>
+                        <td style="text-align: center;"><img src="{!! asset('/uploads/'.$item->image) !!}" width="100px;" class="img-circle" /></td>
                         <td style="text-align: center;">
                             <a href="{!! route('categories.edit', $item->id) !!}" class="glyphicon glyphicon-edit"> Edit</a> &nbsp;&nbsp;&nbsp;&nbsp;
                             {!! Form::open(array('route'=>array('categories.destroy',$item->id),'method'=>'DELETE','style'=>'display: inline', 'class' =>'form-delete')) !!}    

@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Libs\Traits\ContentUploadTrait;
 
 class Category extends Model
 {
+
+    use ContentUploadTrait;
 
     protected $table = 't_category';
 
@@ -15,7 +18,7 @@ class Category extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'introduce', 'id',
+        'name', 'introduce', 'id', 'image',
     ];
 
 }
