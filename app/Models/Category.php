@@ -9,7 +9,6 @@ class Category extends Model
 
     protected $table = 't_category';
 
-
     /**
      * The attributes that are mass assignable.
      *

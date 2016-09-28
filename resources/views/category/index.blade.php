@@ -9,20 +9,19 @@
         </div>
     </div>
     <!--Form search-->
-    <form action="#" method="#">
-        <div class="row" style="margin-top: 5px;">
-            <div class="col-md-4">
-                <label>Name</label>
-                <input class="form-control" type="text" name="search" />
-            </div>
+    {!! Form::open(array('route'=>array('categories.index'),'method'=>'GET')) !!} 
+    <div class="row" style="margin-top: 5px;">
+        <div class="col-md-4">
+            <label>Name</label>
+            <input class="form-control" type="text" name="name" placeholder="Search by category name..." />
         </div>
-        <div class="row" style="margin-top: 15px;">
-            <div class="col-md-2">
-                <button type="button" class="btn btn-primary">Search</button>
-            </div>
+    </div>
+    <div class="row" style="margin-top: 15px;">
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary">Search</button>
         </div>
-        {{ csrf_field() }}
-    </form>
+    </div>
+    {!! Form::close() !!}
     <hr/>
     <div class="row" style="margin-top: 20px; margin-bottom: 20px;">
         <div class="col-md-12">
@@ -37,6 +36,13 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @if(count($category) === 0)
+                    <tr>
+                        <td style="text-align: center;" colspan="5">
+                            No result on list category
+                        </td>
+                    </tr>
+                    @else
                     @foreach($category as $item)
                     <tr>
                         <td>{{ $item->id }}</td>
@@ -50,9 +56,10 @@
                         </td>
                     </tr>
                     @endforeach
+                    @endif
                 </tbody>
                 <tfoot>
-                <td colspan="5" style="text-align: right;">{{ $category->links() }}</td>
+                <td colspan="5" style="text-align: right;">{{ $category->appends(Request::all())->links() }}</td>
                 </tfoot>
             </table>
         </div>
