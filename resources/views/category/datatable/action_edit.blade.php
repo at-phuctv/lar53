@@ -1,0 +1,1 @@
+<a href="{!! route('categories.edit', $id) !!}">Edit</a>

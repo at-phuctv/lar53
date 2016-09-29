@@ -120,4 +120,9 @@ class CategoryController extends Controller
         flash('Delete category successful!', 'success');
         return redirect()->route('categories.index');
     }
+    
+    public function indexDatatable()
+    {
+        return view('category.index_datatable');
+    }
 }

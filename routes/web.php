@@ -24,6 +24,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('logout', 'Auth\LoginController@logout');
     //Route for category
     Route::resource('categories', 'CategoryController');
-    Route::get('search', ['uses' => 'CategoryController@search', 'as' => 'search']);
+    Route::get('index-datatable', 'CategoryController@indexDatatable');
+    //Route Datatable
+    Route::get('datatables/{type}', 'DatatableController@getData')
+        ->where('type', 'category');
 });
 Auth::routes();
