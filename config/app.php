@@ -158,6 +158,7 @@ return [
         Laracasts\Flash\FlashServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Unisharp\Ckeditor\ServiceProvider::class,
+        Yajra\Datatables\DatatablesServiceProvider::class,
     ],
     /*
       |--------------------------------------------------------------------------
