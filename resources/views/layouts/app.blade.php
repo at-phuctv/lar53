@@ -13,6 +13,7 @@
         <!-- Styles -->
         <link href={!!asset('/css/app.css')!!} rel="stylesheet">
         <link href={!!asset('/css/footer.css')!!} rel="stylesheet">
+        <link href={!!asset('/css/datatable/dataTables.bootstrap.min.css')!!} rel="stylesheet">
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <!-- Optional theme -->
@@ -98,6 +99,9 @@ echo json_encode([
         <script src="//code.jquery.com/jquery.js"></script>
         <script src={!!asset('/js/app.js')!!}></script>
         <script src={!!asset('/js/hidding_flash.js')!!}></script>
+        <script src={!!asset('/js/datatable/dataTables.bootstrap.min.js')!!}></script>
+        <script src={!!asset('/js/datatable/dataTables.buttons.min.js')!!}></script>
+        <script src={!!asset('/js/datatable/jquery.dataTables.min.js')!!}></script>
         @yield('script')
     </body>
     <div id='footer'>
