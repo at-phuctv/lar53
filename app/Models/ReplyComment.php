@@ -20,4 +20,5 @@ class ReplyComment extends Model
         'id',
         'date',
     ];
+    
 }
