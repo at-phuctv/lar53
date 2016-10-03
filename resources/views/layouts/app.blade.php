@@ -97,13 +97,17 @@ echo json_encode([
         </div>
         @yield('content')
         <!-- Scripts -->
-        <script src={!!asset('/js/jquery-3.1.1.min.js')!!}></script>
+        <script src="//code.jquery.com/jquery-1.12.3.js"></script>
         <script src={!!asset('/js/app.js')!!}></script>
         <script src={!!asset('/js/common.js')!!}></script>
         <script src={!!asset('/js/hidding_flash.js')!!}></script>
-        <script src={!!asset('/js/datatable/dataTables.buttons.min.js')!!}></script>
-        <script src={!!asset('/js/datatable/dataTables.bootstrap.min.js')!!}></script>
-        <script src={!!asset('/js/datatable/jquery.dataTables.min.js')!!}></script>
+        <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+        <script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+        <script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+        <script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+        <script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
         @yield('script')
     </body>
     <div id='footer'>

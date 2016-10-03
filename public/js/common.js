@@ -7,6 +7,10 @@
 
 $(document).ready(function () {
     $('#category-table').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],
         order: [0, "desc"],
         ajax: {
             url: 'datatables/category',
