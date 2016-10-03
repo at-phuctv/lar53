@@ -43,3 +43,9 @@ $factory->define(App\Models\Comment::class, function (Faker\Generator $faker) {
         'date' => $faker->date(),
     ];
 });
+$factory->define(App\Models\ReplyComment::class, function (Faker\Generator $faker) {
+    return [
+        'messages' => $faker->text(200),
+        'date' => $faker->date(),
+    ];
+});
