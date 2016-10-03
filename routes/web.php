@@ -28,5 +28,6 @@ Route::group(['middleware' => ['auth']], function() {
     //Route Datatable
     Route::get('datatables/{type}', 'DatatableController@getData')
         ->where('type', 'category');
+    Route::resource('users', 'UsersController');
 });
 Auth::routes();
