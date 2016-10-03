@@ -19,7 +19,6 @@
                         <th>Introduce</th>
                         <th>Image</th>
                         <th>Edit</th>
-                        <th>Remove</th>
                     </tr>
                 </thead>
             </table>

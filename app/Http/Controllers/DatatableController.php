@@ -25,6 +25,7 @@ class DatatableController extends Controller
         ];
         $category = \App\Models\Category::select($column);
         return Datatables::of($category)
+                ->addColumn('image', 'category.datatable.view_image')
                 ->addColumn('edit', 'category.datatable.action_edit')
                 ->addColumn('remove', 'category.datatable.action_remove')
                 ->make(true);

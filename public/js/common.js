@@ -6,9 +6,6 @@
 
 
 $(document).ready(function () {
-    $.extend($.fn.dataTable.defaults, {
-        buttons: ['copy', 'csv', 'excel']
-    });
     $('#category-table').DataTable({
         order: [0, "desc"],
         ajax: {
@@ -18,11 +15,8 @@ $(document).ready(function () {
             {data: 'id', name: 'id'},
             {data: 'name', name: 'name'},
             {data: 'introduce', name: 'introduce'},
-            {data: 'image', name: 'image', "render": function (data, type, row) {
-                    return '<img src="' + data + ' " width="100px" />';
-                }},
-            {data: 'edit', name: 'edit'},
-            {data: 'remove', name: 'remove'},
+            {data: 'image', name: 'image', 'orderable': false},
+            {data: 'edit', name: 'edit', 'orderable': false}
         ]
     });
 });

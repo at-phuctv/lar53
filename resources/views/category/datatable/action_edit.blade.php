@@ -1,1 +1,1 @@
-<a href="{!! route('categories.edit', $id) !!}">Edit</a>
+<a href="{!! route('categories.edit', $id) !!}"><i class="glyphicon glyphicon-edit"> Edit</i></a>

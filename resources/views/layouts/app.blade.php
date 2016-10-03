@@ -17,7 +17,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-        <link href={!!asset('/css/datatable/dataTables.bootstrap.min.css')!!} rel="stylesheet">
+        <link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet">
+        <link href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" rel="stylesheet">
         <!-- Scripts -->
         <script>
             window.Laravel = <?php
@@ -96,12 +97,12 @@ echo json_encode([
         </div>
         @yield('content')
         <!-- Scripts -->
-        <script src="//code.jquery.com/jquery.js"></script>
+        <script src={!!asset('/js/jquery-3.1.1.min.js')!!}></script>
         <script src={!!asset('/js/app.js')!!}></script>
         <script src={!!asset('/js/common.js')!!}></script>
         <script src={!!asset('/js/hidding_flash.js')!!}></script>
-        <script src={!!asset('/js/datatable/dataTables.bootstrap.min.js')!!}></script>
         <script src={!!asset('/js/datatable/dataTables.buttons.min.js')!!}></script>
+        <script src={!!asset('/js/datatable/dataTables.bootstrap.min.js')!!}></script>
         <script src={!!asset('/js/datatable/jquery.dataTables.min.js')!!}></script>
         @yield('script')
     </body>
