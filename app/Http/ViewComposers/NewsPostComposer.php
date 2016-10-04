@@ -3,7 +3,7 @@
 namespace App\Http\ViewComposers;
 
 use Illuminate\View\View;
-use App\Models\Category;
+use App\Models\News;
 
 class NewsPostComposer
 {
@@ -13,7 +13,7 @@ class NewsPostComposer
      *
      * @var User
      */
-    protected $categories;
+    protected $news;
 
     /**
      * Create a new profile composer.
@@ -21,10 +21,10 @@ class NewsPostComposer
      * @param  User  $categories
      * @return void
      */
-    public function __construct(Category $categories)
+    public function __construct(News $news)
     {
         // Dependencies automatically resolved by service container...
-        $this->categories = $categories;
+        $this->news = $news;
     }
 
     /**
@@ -35,8 +35,8 @@ class NewsPostComposer
      */
     public function compose(View $view)
     {
-        $category = $this->categories->pluck('name', 'id');
-        $category = array_map('htmlentities', $category->toArray());
-        $view->with('category', $category);
+        $news = $this->categories->pluck('name', 'id');
+        $news = array_map('htmlentities', $news->toArray());
+        $view->with('news', $news);
     }
 }
