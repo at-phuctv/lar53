@@ -15,7 +15,7 @@ class CreateTNewsTable extends Migration
         Schema::create('t_news', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('cate_id')->unsigned();
-            $table->integer('user_id')->unsigned();
+            $table->string('author');
             $table->string('title');
             $table->text('introduce');
             $table->longText('content');

@@ -35,6 +35,7 @@ $factory->define(App\Models\News::class, function (Faker\Generator $faker) {
         'content' => $faker->text(200),
         'image' => $faker->imageUrl(),
         'title' => $faker->title,
+        'author' =>$faker->name,
     ];
 });
 $factory->define(App\Models\Comment::class, function (Faker\Generator $faker) {
