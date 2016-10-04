@@ -17,10 +17,6 @@ class AddForeignKeyToTNewsTable extends Migration
                 ->references('id')
                 ->on('t_category')
                 ->onDelete('CASCADE');
-             $table->foreign('user_id', 't_news_ibfk2')
-                ->references('id')
-                ->on('users')
-                ->onDelete('CASCADE');
         });
     }
 
@@ -33,7 +29,6 @@ class AddForeignKeyToTNewsTable extends Migration
     {
         Schema::table('t_news', function (Blueprint $table) {
             $table->dropForeign('t_news_ibfk1');
-            $table->dropForeign('t_news_ibfk2');
         });
     }
 }
