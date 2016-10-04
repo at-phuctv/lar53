@@ -10,7 +10,7 @@
     <!--Introduce-->
     <div class="row">
         <div class="col-md-12">
-            <article>{{ $category->introduce }}</article>
+            <article>{!! $category->introduce !!}</article>
         </div>
     </div>
 </div>

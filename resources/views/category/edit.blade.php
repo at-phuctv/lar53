@@ -49,9 +49,15 @@
 </div>
 @stop
 @section('script')
-<script src="{!! asset('/vendor/unisharp/laravel-ckeditor/ckeditor.js')!!}"></script>
-<script src="{!! asset('/vendor/unisharp/laravel-ckeditor/adapters/jquery.js')!!}"></script>
 <script>
-$('textarea').ckeditor();
+    CKEDITOR.replace('introduce',
+            {
+                filebrowserBrowseUrl: '{!! asset("/ckfinder/ckfinder.html")!!}',
+                filebrowserImageBrowseUrl: '{!! asset("/ckfinder/ckfinder.html?type=Images")!!}',
+                filebrowserFlashBrowseUrl: '{!! asset("/ckfinder/ckfinder.html?type=Flash")!!}',
+                filebrowserUploadUrl: '{!! asset("/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files")!!}',
+                filebrowserImageUploadUrl: '{!! asset("/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images")!!}',
+                filebrowserFlashUploadUrl: '{!! asset("/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash")!!}',
+            });
 </script>
 @stop

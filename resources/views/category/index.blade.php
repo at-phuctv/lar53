@@ -47,9 +47,9 @@
                     @foreach($category as $item)
                     <tr>
                         <td>{{ $item->id }}</td>
-                        <td>{{ $item->name }}</td>
-                        <td>{{ str_limit($item->introduce, 100) }}</td>
-                        <td style="text-align: center;"><img src="{!! asset('/uploads/'.$item->image) !!}" width="100px;" class="img-responsive" /></td>
+                        <td><a href ="{!! route('categories.show', $item->id) !!}">{{ str_limit($item->name, 50) }}</a></td>
+                        <td>{{ str_limit($item->introduce, 50) }}</td>
+                        <td style="text-align: center;"><img src="{!! asset('/uploads/'.$item->image) !!}" width="100px;" class="img-thumbnail" /></td>
                         <td style="text-align: center;">
                             <a href="{!! route('categories.edit', $item->id) !!}" class="glyphicon glyphicon-edit"> Edit</a> &nbsp;&nbsp;&nbsp;&nbsp;
                             {!! Form::open(array('route'=>array('categories.destroy',$item->id),'method'=>'DELETE','style'=>'display: inline', 'class' =>'form-delete')) !!}    
