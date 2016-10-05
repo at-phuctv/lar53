@@ -9,6 +9,7 @@ use App\Http\Requests\SearchCategoryRequest;
 use App\Http\Requests;
 use DB;
 use App\Models\Category;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class CategoryController extends Controller
 {
@@ -121,8 +122,44 @@ class CategoryController extends Controller
         return redirect()->route('categories.index');
     }
     
+    // get index datatabel
     public function indexDatatable()
     {
         return view('category.index_datatable');
+    }
+
+    //download CSV
+    public function downloadCsv()
+    {
+        $response = new StreamedResponse(function(){
+            // Open output stream
+            $handle = fopen('php://output', 'w');
+
+            // Add CSV headers
+            fputcsv($handle, [
+                'id',
+                'name', 
+                'introduce'
+            ]);
+
+            // Get all category
+            Category::chunk(1000, function($category) use($handle) {
+                foreach ($category as $item) {
+                    // Add a new row with data
+                    fputcsv($handle, [
+                        $item->id,
+                        $item->name,
+                        $item->introduce
+                    ]);
+                }
+            });
+            // Close the output stream
+            fclose($handle);
+        }, 200, [
+                'Content-Type' => 'text/csv',
+                'Content-Disposition' => 'attachment; filename="export.csv"',
+            ]);
+
+        return $response;
     }
 }

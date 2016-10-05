@@ -23,6 +23,9 @@
     </div>
     {!! Form::close() !!}
     <hr/>
+    {!! Form::open(array('route'=>array('categories.csv'),'method'=>'POST')) !!} 
+    <p> <input type="submit" class="btn btn-info" value="Download CSV" /> </p>
+    {!! Form::close() !!}
     <div class="row" style="margin-top: 20px; margin-bottom: 20px;">
         <div class="col-md-12">
             <!--Table Category-->

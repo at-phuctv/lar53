@@ -10,6 +10,12 @@ class Category extends Model
 
     use ContentUploadTrait;
 
+    /**
+     *
+     * The table define category model
+     *
+     */
+    
     protected $table = 't_category';
 
     /**
@@ -20,5 +26,4 @@ class Category extends Model
     protected $fillable = [
         'name', 'introduce', 'id', 'image',
     ];
-
 }
