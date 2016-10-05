@@ -1,9 +1,6 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-    <div class="row">
-        <h2><strong>CREATE CATEGORY</strong></h2>
-    </div>
     <!--Show validate-->
     @if (count($errors) > 0)
     <div class="alert alert-danger">
@@ -14,30 +11,23 @@
         </ul>
     </div>
     @endif
-    {!! Form::open(['route' => 'categories.store', 'class' => 'form-horizontal', 'method' => 'POST' , 'enctype' => 'multipart/form-data']) !!}
-    <div class="row" style="margin-bottom: 10px;">
-        <div class="col-md-6">
-            <label>Name</label>
-            <input type="text" class="form-control" name="name" />
-        </div>
-    </div>
-    <div class="row" style="margin-bottom: 10px;">
-        <div class="col-md-6">
-            <label>Introduce</label>
-            <textarea class="form-control" cols="10" rows="6" name="introduce"></textarea>
-        </div>
-    </div>
-    <div class="row" style="margin-bottom: 10px;">
-        <div class="col-md-6">
-            <label>Image</label>
-            <input type="file"  name="image" />
-        </div>
-    </div>
-    <div class="row" style="margin-bottom: 100px;">
-        <div class="col-md-6">
-            <button type="submit" name="ok" class="btn btn-primary">Create</button>
-        </div>
-    </div>
+    {!! Form::open(['route' => 'categories.store', 'class' => 'basic-grey', 'method' => 'POST' , 'enctype' => 'multipart/form-data']) !!}
+    <h1>Create Category 
+        <span>Please fill all the texts in the fields.</span>
+    </h1>
+    <p>Name</p>
+    <label>
+        <input id="name" type="text" name="name" placeholder="Category name" />
+    </label>
+    <p>Image</p>
+    <label>
+        <input id="image" type="file"  name="image" />
+    </label>
+    <p>Introduce</p>
+    <label>
+        <textarea id="introduce" name="introduce" placeholder="Enter introduce category"></textarea>
+    </label> 
+    <p> <input type="submit" class="button" value="Create" /> </p>
     {!! Form::close() !!}
 </div>
 @stop
