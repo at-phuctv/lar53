@@ -15,7 +15,7 @@ class CreateTCategoryTable extends Migration
         Schema::create('t_category', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
-            $table->string('introduce');
+            $table->text('introduce');
             $table->string('image');
             $table->timestamps();
         });

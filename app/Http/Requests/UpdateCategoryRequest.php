@@ -25,7 +25,7 @@ class UpdateCategoryRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255',
-            'introduce' => 'required|max:255'
+            'introduce' => 'required'
         ];
     }
 }
