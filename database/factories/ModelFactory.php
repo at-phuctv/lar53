@@ -22,7 +22,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 //Factory for Category model
 $factory->define(App\Models\Category::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->name,
+        'name' => $faker->name . time().str_random(100),
         'introduce' => $faker->text(50),
         'image' => $faker->imageUrl(),
     ];

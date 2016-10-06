@@ -9,21 +9,25 @@
         </div>
     </div>
     <!--Form search-->
-    {!! Form::open(array('route'=>array('categories.index'),'method'=>'GET')) !!} 
-    <div class="row" style="margin-top: 5px;">
-        <div class="col-md-4">
-            <label>Name</label>
-            <input class="form-control" type="text" name="name" placeholder="Search by category name..." />
-        </div>
-    </div>
-    <div class="row" style="margin-top: 15px;">
-        <div class="col-md-2">
-            <button type="submit" class="btn btn-primary">Search</button>
+    {!! Form::open(array('route'=>array('categories.index'),'method'=>'GET')) !!}
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Name</h4>
+            <div id="custom-search-input">
+                <div class="input-group col-md-4">
+                    <input type="text" name="name" class="  search-query form-control" placeholder="Enter category by name" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-danger" type="submit">
+                        <span class=" glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
         </div>
     </div>
     {!! Form::close() !!}
     <hr/>
-    {!! Form::open(array('route'=>array('categories.csv'),'method'=>'POST')) !!} 
+    {!! Form::open(array('route'=>array('getCsv',$type),'method'=>'GET')) !!}
     <p> <input type="submit" class="btn btn-info" value="Download CSV" /> </p>
     {!! Form::close() !!}
     <div class="row" style="margin-top: 20px; margin-bottom: 20px;">
@@ -50,12 +54,12 @@
                     @foreach($category as $item)
                     <tr>
                         <td>{{ $item->id }}</td>
-                        <td><a href ="{!! route('categories.show', $item->id) !!}">{{ str_limit($item->name, 50) }}</a></td>
+                        <td><a href ="{!! route('categories.show', $item->id) !!}">{{ str_limit($item->name, 20) }}</a></td>
                         <td>{{ str_limit($item->introduce, 50) }}</td>
                         <td style="text-align: center;"><img src="{!! asset('/uploads/'.$item->image) !!}" width="100px;" class="img-thumbnail" /></td>
                         <td style="text-align: center;">
                             <a href="{!! route('categories.edit', $item->id) !!}" class="glyphicon glyphicon-edit"> Edit</a> &nbsp;&nbsp;&nbsp;&nbsp;
-                            {!! Form::open(array('route'=>array('categories.destroy',$item->id),'method'=>'DELETE','style'=>'display: inline', 'class' =>'form-delete')) !!}    
+                            {!! Form::open(array('route'=>array('categories.destroy',$item->id),'method'=>'DELETE','style'=>'display: inline', 'class' =>'form-delete')) !!}
                             <button class="btn btn-link"> <i class="glyphicon glyphicon-remove"> Remove</i></button>
                             {!! Form::close() !!}
                         </td>
@@ -71,4 +75,3 @@
     </div>
 </div>
 @stop
-

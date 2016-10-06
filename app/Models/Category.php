@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Libs\Traits\ContentUploadTrait;
-
 class Category extends Model
 {
 
@@ -26,4 +25,7 @@ class Category extends Model
     protected $fillable = [
         'name', 'introduce', 'id', 'image',
     ];
+
+    // field csv
+    public static $fieldCsv = ['id', 'name', 'introduce'];
 }
