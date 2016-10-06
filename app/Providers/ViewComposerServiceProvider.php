@@ -15,7 +15,7 @@ class ViewComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer('news.create', \App\Http\ViewComposers\NewsPostComposer::class);
+        view()->composer(['news.create','news.edit'], \App\Http\ViewComposers\NewsComposer::class);
     }
 
     /**

@@ -11,6 +11,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        $table = ['t_news', 't_category', 'comment', 't_reply_comments'];
+        foreach ($table as $value) {
+            DB::table($value)->truncate();
+        }
         $this->call(UsersTableSeeder::class);
         $this->call(CategoryTableSeeder::class);
         $this->call(NewsTableSeeder::class);
