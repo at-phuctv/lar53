@@ -56,6 +56,7 @@ echo json_encode([
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manager <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="{!! route('categories.index') !!}">Category</a></li>
+                                <li><a href="{!! route('news.index') !!}">News</a></li>
                             </ul>
                         </li>
                     </ul>
