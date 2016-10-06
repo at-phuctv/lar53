@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Models\News;
+use App\Http\Requests\NewsRequest;
 
 class NewsController extends Controller
 {
@@ -46,7 +47,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-        //
+        return view('news.create');
     }
 
     /**
@@ -55,9 +56,16 @@ class NewsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NewsRequest $request)
     {
-        //
+        $input = $request->all();
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $input['image'] = News::upload($image);
+        }
+        $this->news->create($input);
+        flash('Create news successful!', 'success');
+        return redirect()->route('news.index');
     }
 
     /**
@@ -79,7 +87,8 @@ class NewsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $news = News::findOrFail($id);
+        return view('news.edit', ['news' => $news]);
     }
 
     /**
@@ -89,9 +98,17 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(NewsRequest $request, $id)
     {
-        //
+        $news = $this->news->findOrFail($id);
+        $input = $request->all();
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $input['image'] = $this->news->upload($image);
+        }
+        $news->update($input);
+        flash('Update category successful!', 'success');
+        return redirect()->route('news.index');
     }
 
     /**
@@ -102,6 +119,9 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $news = $this->news->findOrFail($id);
+        $news->delete($news);
+        flash('Delete news successful!', 'success');
+        return redirect()->route('news.index');
     }
 }

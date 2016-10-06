@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Libs\Traits\ContentUploadTrait;
 
 class News extends Model
 {
+
+    use ContentUploadTrait;
 
     protected $table = 't_news';
 
@@ -15,12 +18,13 @@ class News extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
+        'author',
         'introduce',
         'content',
         'image',
         'cate_id',
         'user_id',
+        'title',
     ];
     public static $fieldCsv = [
         'id',
