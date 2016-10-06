@@ -24,7 +24,7 @@ class UpdateCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255',
+            'name' => 'required|max:255|unique:t_category,name,'.$this->segment(2),
             'introduce' => 'required'
         ];
     }

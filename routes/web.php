@@ -25,10 +25,11 @@ Route::group(['middleware' => ['auth']], function() {
     //Route for category
     Route::resource('categories', 'CategoryController');
     Route::get('index-datatable', 'CategoryController@indexDatatable');
-    Route::post('csv', 'CategoryController@downloadCsv')->name('categories.csv');
     //Route Datatable
     Route::get('datatables/{type}', 'DatatableController@getData')
         ->where('type', 'category');
     Route::resource('users', 'UsersController');
+    //download csv
+    Route::get('csv/{type}', 'CsvController@downloadCsv')->name('getCsv');
 });
 Auth::routes();

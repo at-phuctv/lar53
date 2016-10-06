@@ -9,11 +9,15 @@ use App\Http\Requests\SearchCategoryRequest;
 use App\Http\Requests;
 use DB;
 use App\Models\Category;
-use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class CategoryController extends Controller
 {
+    protected $category;
 
+    public function __construct(Category $category)
+    {
+        $this->category = $category;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -28,12 +32,12 @@ class CategoryController extends Controller
             'introduce',
             'image'
         ];
-        $data = Category::select($select);
+        $data = $this->category->select($select);
         if (isset($input)) {
             $category = $data->where('name', 'LIKE', '%' . $input . '%');
         }
         $category = $data->orderBy('id', 'DESC')->paginate(10);
-        return view('category.index', ['category' => $category]);
+        return view('category.index', ['category' => $category, 'type' =>'category']);
     }
 
     /**
@@ -59,7 +63,7 @@ class CategoryController extends Controller
             $image = $request->file('image');
             $input['image'] = Category::upload($image);
         }
-        Category::create($input);
+        $this->category->create($input);
         flash('Create category successful!', 'success');
         return redirect()->route('categories.index');
     }
@@ -72,7 +76,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $category = Category::findOrFail($id);
+        $category = $this->category->findOrFail($id);
         return view('category.show', compact('category'));
     }
 
@@ -84,7 +88,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::findOrFail($id);
+        $category = $this->category->findOrFail($id);
         return view('category.edit', compact('category'));
     }
 
@@ -97,11 +101,11 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, $id)
     {
-        $category = Category::findOrFail($id);
+        $category = $this->category->findOrFail($id);
         $input = $request->all();
         if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $input['image'] = Category::upload($image);
+            $input['image'] = $this->category->upload($image);
         }
         $category->update($input);
         flash('Update category successful!', 'success');
@@ -116,7 +120,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::findOrFail($id);
+        $category = $this->category->findOrFail($id);
         $category->delete($category);
         flash('Delete category successful!', 'success');
         return redirect()->route('categories.index');
@@ -126,40 +130,5 @@ class CategoryController extends Controller
     public function indexDatatable()
     {
         return view('category.index_datatable');
-    }
-
-    //download CSV
-    public function downloadCsv()
-    {
-        $response = new StreamedResponse(function(){
-            // Open output stream
-            $handle = fopen('php://output', 'w');
-
-            // Add CSV headers
-            fputcsv($handle, [
-                'id',
-                'name', 
-                'introduce'
-            ]);
-
-            // Get all category
-            Category::chunk(1000, function($category) use($handle) {
-                foreach ($category as $item) {
-                    // Add a new row with data
-                    fputcsv($handle, [
-                        $item->id,
-                        $item->name,
-                        $item->introduce
-                    ]);
-                }
-            });
-            // Close the output stream
-            fclose($handle);
-        }, 200, [
-                'Content-Type' => 'text/csv',
-                'Content-Disposition' => 'attachment; filename="export.csv"',
-            ]);
-
-        return $response;
     }
 }
