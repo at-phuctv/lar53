@@ -11,7 +11,6 @@
             <li class="active">Add Category</li>
         </ol>
     </section>
-
     <!-- Main content -->
     <section class="content">
         <!-- Horizontal Form -->
@@ -34,7 +33,7 @@
             {!! Form::open(array('route'=>array('categories.store'),'method'=>'POST','enctype' => 'multipart/form-data', 'class' => 'basic-grey')) !!}  
             <p>Name</p>
             <label>
-                <input id="name" type="text" name="name"  placeholder="Category name" />
+                <input id="name" value="{{ old('name') }}" type="text" name="name"  placeholder="Category name" />
             </label>
             <p>Image</p>
             <label>
@@ -42,7 +41,7 @@
             </label>
             <p>Introduce</p>
             <label>
-                <textarea id="introduce" name="introduce" placeholder="Enter introduce category"></textarea>
+                <textarea id="introduce" name="introduce" placeholder="Enter introduce category">{{ old('introduce') }}</textarea>
             </label> 
             <p> <input type="submit" class="button" value="Add" /> </p>
             {!! Form::close() !!}

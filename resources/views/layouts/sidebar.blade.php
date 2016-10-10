@@ -22,10 +22,13 @@
          <li class="treeview">
             <a href="#"><i class="fa fa-link"></i> <span>Groups Users</span> <i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">
-                
+                <li><a href="{!! route('users.index') !!}"><i class="fa fa-user"></i> <span>Users</span></a></li>
+               <li><a href="#"><i class="fa fa-user-secret"></i> <span>Admin Users</span></a></li>
             </ul>
          </li>
          <li class="header">MANAGER</li>
+         <li><a href="{!! route('categories.index') !!}"><i class="fa fa-inbox"></i> <span>Category</span></a></li>
+         <li><a href="{!! route('news.index') !!}"><i class="fa fa-newspaper-o"></i> <span>News</span></a></li>
       </ul><!-- /.sidebar-menu -->
    </section>
    <!-- /.sidebar -->

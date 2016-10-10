@@ -76,7 +76,8 @@ class NewsController extends Controller
      */
     public function show($id)
     {
-        //
+        $news = $this->news->findOrFail($id);
+        return view('news.show', ['news' => $news]);
     }
 
     /**
@@ -107,7 +108,7 @@ class NewsController extends Controller
             $input['image'] = $this->news->upload($image);
         }
         $news->update($input);
-        flash('Update category successful!', 'success');
+        flash('Update news successful!', 'success');
         return redirect()->route('news.index');
     }
 
@@ -123,10 +124,5 @@ class NewsController extends Controller
         $news->delete($news);
         flash('Delete news successful!', 'success');
         return redirect()->route('news.index');
-    }
-    
-    public function template()
-    {
-        return view('extends.example');
     }
 }

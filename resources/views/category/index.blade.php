@@ -26,7 +26,9 @@
                     </div><!-- /.box-header -->
                     <div class="box-body">
                         @include('flash::message')
-
+                        {!! Form::open(array('route'=>array('getCsv',$type),'method'=>'GET')) !!}
+                        <p> <input type="submit" class="btn btn-info" value="Download CSV" /> </p>
+                        {!! Form::close() !!}
                         <table id="dataTables-users" class="table table-bordered dataTable table-striped"
                                data-plugin="dataTable">
                             <thead>
@@ -63,7 +65,7 @@
                                 @endif
                             </tbody>
                         </table>
-                        <div class="paginations"> {{ $category->appends(Request::all())->links() }} </div>
+                        <div class="paginations pull-right"> {{ $category->appends(Request::all())->links() }} </div>
                     </div><!-- /.box-body -->
                 </div><!-- /.box -->
             </div><!-- /.col -->
