@@ -1,119 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>AdminLTE 2 | Starter</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <!-- Bootstrap 3.3.5 -->
+        <link rel="stylesheet" href="{{ asset('/assets/bootstrap/css/bootstrap.min.css') }}">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="{{ asset('/assets/fonts/font-awesome/font-awesome.min.css') }}">
 
-        <!-- CSRF Token -->
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="{{ asset('/assets/fonts/ionicons/ionicons.min.css') }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
-
-        <!-- Styles -->
-        <link href={!!asset('/css/app.css')!!} rel="stylesheet">
-        <link href={!!asset('/css/footer.css')!!} rel="stylesheet">
-         <link href={!!asset('/css/common.css')!!} rel="stylesheet">
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-        <link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet">
-        <link href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" rel="stylesheet">
-        <!-- Scripts -->
-        <script>
-            window.Laravel = <?php
-echo json_encode([
-    'csrfToken' => csrf_token(),
-]);
-
-?>
-        </script>
+        <!-- web-icons -->
+        <link rel="stylesheet" href="{{ asset('/assets/fonts/web-icons/web-icons.min.css') }}">
+        <!-- DataTables -->
+        <link rel="stylesheet" href="{{ asset('/assets/plugins/datatables/dataTables.bootstrap.css') }}">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="{{ asset('/assets/dist/css/AdminLTE.min.css') }}">
+        <link href={!!asset('/css/common.css')!!} rel="stylesheet">
+        <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+              page. However, you can choose any other skin. Make sure you
+              apply the skin class to the body tag so the changes take effect.
+        -->
+        <link rel="stylesheet" href="{{ asset('/assets/dist/css/skins/skin-blue.min.css') }}">
     </head>
-    <body>
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
+    <body class="hold-transition skin-blue sidebar-mini">
+        <div class="wrapper">
+            @include('layouts.topbar')
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
+            @include('layouts.sidebar')
 
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
+            @yield('content')
+
+            <!-- Main Footer -->
+            <footer class="main-footer">
+                <!-- To the right -->
+                <div class="pull-right hidden-xs">
+                    Anything you want
                 </div>
+                <!-- Default to the left -->
+                <strong>Copyright &copy; 2015 <a href="#">Company</a>.</strong> All rights reserved.
+            </footer>
+            <div class="control-sidebar-bg"></div>
+        </div><!-- ./wrapper -->
+        <!-- REQUIRED JS SCRIPTS -->
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manager <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="{!! route('categories.index') !!}">Category</a></li>
-                                <li><a href="{!! route('news.index') !!}">News</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}">Register</a></li>
-                        @else
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-
-                            <ul class="dropdown-menu" role="menu">
-                                <li>
-                                    <a href="{{ url('/logout') }}"
-                                       onclick="event.preventDefault();
-                                               document.getElementById('logout-form').submit();">
-                                        Logout
-                                    </a>
-
-                                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                        {{ csrf_field() }}
-                                    </form>
-                                </li>
-                            </ul>
-                        </li>
-                        @endif
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <div class="container">
-            <div class="row">
-                @include('flash::message')
-            </div>
-        </div>
-        @yield('content')
-        <!-- Scripts -->
-        <script src="//code.jquery.com/jquery-1.12.3.js"></script>
-        <script src={!!asset('/js/app.js')!!}></script>
-        <script src={!!asset('/js/common.js')!!}></script>
-        <script src={!!asset('/js/hidding_flash.js')!!}></script>
-        <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-        <script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-        <script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-        <script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-        <script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+        <!-- jQuery 2.1.4 -->
+        <script src="{{ asset('/assets/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
+        <!-- myscript -->
+        <script src="{{ asset('/assets/bootstrap/js/myscript.js') }}"></script>
+        <!-- Bootstrap 3.3.5 -->
+        <script src="{{ asset('/assets/bootstrap/js/bootstrap.min.js') }}"></script>
+        <!-- AdminLTE App -->
+        <script src="{{ asset('/assets/dist/js/app.min.js') }}"></script>
+        <!-- DataTables -->
+        <script src="{{ asset('/assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('/assets/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+        <!-- SlimScroll -->
+        <script src="{{ asset('/assets/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
+        <!-- FastClick -->
+        <script src="{{ asset('/assets/plugins/fastclick/fastclick.min.js') }}"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="{{ asset('/assets/dist/js/demo.js') }}"></script>
         <script  src="{!! asset('/ckeditor/ckeditor.js') !!}"></script>
+        <script src={!!asset('/js/hidding_flash.js')!!}></script>
+
         @yield('script')
     </body>
-    <div id='footer'>
-        <p style="text-align: center;padding-top: 10px;"><strong>&copy; Authors</strong></p>
-    </div>
 </html>
