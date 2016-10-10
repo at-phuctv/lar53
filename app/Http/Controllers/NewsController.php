@@ -124,4 +124,9 @@ class NewsController extends Controller
         flash('Delete news successful!', 'success');
         return redirect()->route('news.index');
     }
+    
+    public function template()
+    {
+        return view('extends.example');
+    }
 }
