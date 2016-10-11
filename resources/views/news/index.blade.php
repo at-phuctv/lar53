@@ -46,10 +46,10 @@
                                 @foreach($news as $item)
                                 <tr>
                                     <td>{{ $item->id }}</td>
-                                    <td><a href ="{!! route('news.show', $item->id) !!}">{{ str_limit($item->author, 20) }}</a></td>
+                                    <td><a href ="{!! route('news.show', $item->id) !!}">{{ str_limit($item->author, 10) }}</a></td>
                                     <td>{{ $item->category->name }}</td>
-                                    <td>{{ str_limit($item->introduce, 20) }}</td>
-                                    <td>{{ str_limit($item->content, 20) }}</td>
+                                    <td>{{ str_limit($item->introduce, 10) }}</td>
+                                    <td>{{ str_limit($item->content, 10) }}</td>
                                     <td style="text-align: center;"><img src="{!! asset('/uploads/'.$item->image) !!}" width="100px;" class="img-thumbnail" /></td>
                                     <td style="text-align: center;">
                                         <a href="{!! route('news.edit', $item->id) !!}" class="glyphicon glyphicon-edit"> Edit</a> &nbsp;&nbsp;&nbsp;&nbsp;
