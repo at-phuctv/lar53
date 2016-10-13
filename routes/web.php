@@ -33,5 +33,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('csv/{type}', 'CsvController@downloadCsv')->name('getCsv');
     //Route for news model
     Route::resource('news', 'NewsController');
+    //Route for comment model
+    Route::resource('comments', 'CommentController', ['except' => ['show']]);
 });
 Auth::routes();
