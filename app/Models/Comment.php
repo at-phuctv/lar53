@@ -6,18 +6,35 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    //
-    protected $table='comment';
-   /**
+
+    //khai bao table
+    protected $table = 'comment';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
+        'id',
+        'news_id',
         'content',
-         'user_id',
-         'news_id',
-         'date',
+        'author',
+        'date',
     ];
 
+    //relation with news
+    public function news()
+    {
+        return $this->belongsTo(News::class);
+    }
+    
+    //display field csv
+     public static $fieldCsv = [
+        'id',
+        'news_id',
+        'content',
+        'author',
+        'date',
+    ];
 }
