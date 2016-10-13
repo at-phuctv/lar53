@@ -56,6 +56,27 @@
                         </ul>
                     </div>
                 </div>
+                <!--Comment-->
+                <div id="comment_form">
+
+                    <div>
+                        <input type="text" name="name" id="name" value="" placeholder="Name">
+                    </div>
+                    <div>
+                        <input type="email" name="email" id="email" value="" placeholder="Email">
+                    </div>
+                    <div>
+                        <input type="url" name="website" id="website" value="" placeholder="Website URL">
+                    </div>
+                    <div>
+                        <textarea rows="10" name="comment" id="comment" placeholder="Comment"></textarea>
+                    </div>
+                    <div>
+                        <input type="submit" name="submit" value="Add Comment">
+                    </div>
+
+                </div>
+                <!--End Comment-->
             </div>
             <!-- END content -->
             <!-- BEGIN sidebar -->
