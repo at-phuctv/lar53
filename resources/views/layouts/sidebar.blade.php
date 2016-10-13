@@ -29,6 +29,8 @@
          <li class="header">MANAGER</li>
          <li><a href="{!! route('categories.index') !!}"><i class="fa fa-inbox"></i> <span>Category</span></a></li>
          <li><a href="{!! route('news.index') !!}"><i class="fa fa-newspaper-o"></i> <span>News</span></a></li>
+         <li><a href="{!! route('comments.index') !!}"><i class="fa fa-comment-o"></i> <span>Comment</span></a></li>
+         <li><a href="{!! route('reply-comments.index') !!}"><i class="fa fa-reply"></i> <span>ReplyComment</span></a></li>
       </ul><!-- /.sidebar-menu -->
    </section>
    <!-- /.sidebar -->
