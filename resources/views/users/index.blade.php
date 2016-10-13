@@ -17,9 +17,6 @@
                 <div class="box">
                     <div class="box-header">
                         <h3 class="box-title">List users</h3>
-                        <a href="{!! route('news.create') !!}">
-                            <button type="button" class="btn btn-floating btn-primary btn-sm pull-right"><i class="icon wb-plus" aria-hidden="true"></i></button>
-                        </a>
                     </div><!-- /.box-header -->
                     <div class="box-body">
                         @include('flash::message')
