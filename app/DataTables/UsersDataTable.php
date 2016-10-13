@@ -17,7 +17,7 @@ class UsersDataTable extends DataTable
     {
         return $this->datatables
                 ->eloquent($this->query())
-                ->addColumn('action', 'action')
+                ->addColumn('action', 'users.datatable.remove')
                 ->make(true);
     }
 
