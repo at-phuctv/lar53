@@ -28,13 +28,19 @@ class Comment extends Model
     {
         return $this->belongsTo(News::class);
     }
-    
+
     //display field csv
-     public static $fieldCsv = [
+    public static $fieldCsv = [
         'id',
         'news_id',
         'content',
         'author',
         'date',
     ];
+
+    //relation replycomment
+    public function replyComments()
+    {
+        return $this->hasMany(ReplyComment::class);
+    }
 }

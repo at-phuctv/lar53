@@ -35,5 +35,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('news', 'NewsController');
     //Route for comment model
     Route::resource('comments', 'CommentController', ['except' => ['show']]);
+    //Route for reply comment
+    Route::resource('reply-comments', 'ReplyCommentController', ['except' => ['show']]);
 });
 Auth::routes();
