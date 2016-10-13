@@ -39,3 +39,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('reply-comments', 'ReplyCommentController', ['except' => ['show']]);
 });
 Auth::routes();
+Route::get('index', 'FrontendController@index')->name('index');
+Route::get('about', 'FrontendController@about')->name('about');
+Route::get('page', 'FrontendController@page')->name('page');
+Route::get('contact', 'FrontendController@contact')->name('contact');
